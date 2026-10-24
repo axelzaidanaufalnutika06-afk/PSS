@@ -47,7 +47,7 @@ class Assignment(models.Model):
     deadline = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.course.code} - {self.title}"
+        return f"{self.course.code} {self.title}"
 
 class Submission(models.Model):
     assignment = models.ForeignKey(
@@ -69,4 +69,4 @@ class Submission(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.student.username} - {self.assignment.title}"
+        return f"{self.student.username} {self.assignment.title}"

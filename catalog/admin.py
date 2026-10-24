@@ -6,8 +6,22 @@ from .models import (
     Assignment,
     Submission,
 )
+
+@admin.register(Submission)
+class SubmissionAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "assignment",
+        "student",
+        "submitted_at",
+    )
+    list_filter = ("submitted_at",)
+    search_fields = (
+        "student__username",
+        "assignment__title",
+    )
+
 admin.site.register(Assignment)
-admin.site.register(Submission)
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
